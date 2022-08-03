@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Projet_AQL
 {
     internal class Sauvegarde
-    { //NomClass : Sauvegarde
-        //Commence ici
+    { 
         public static void EnregistrerEtudiant(string nom, string prenom, int numEtudiant)
         {
             string path = "../../../database/Etudiant/" + numEtudiant + ".txt";
@@ -21,7 +20,7 @@ namespace Projet_AQL
             File.WriteAllText(path, "CodeCours : " + code + "\n" + "NumeroCours : " + numeroCours);
         }
 
-        public static bool NumExist(string numeroEtudiant)
+        public static bool NumExist(int numeroEtudiant)
         {
             string path = "../../../database/Etudiant/" + numeroEtudiant + ".txt";
             return File.Exists(path);
@@ -36,14 +35,28 @@ namespace Projet_AQL
         public static void SauvegarderNotes(double note, int numEtudiant, string cours)
         {
             string path = "../../../database/Notes/" + numEtudiant + ".txt";
-            File.WriteAllText(path, note + "\n" + cours);
+            File.WriteAllText(path, cours + "\n" + note);
         }
 
         public static void ListeEtudiant(string nom, string prenom, int numeroEtudiant)
         {
 
-            string path = "../../../database/" + "Liste" + ".txt";
-            File.AppendAllText(path, $"\n\n  Nom : {nom} \n Prenom : {prenom} \n Numero : {numeroEtudiant}\n");
+            string path = "../../../database/" + "ListeD'etudiant" + ".txt";
+            File.AppendAllText(path, $"\n\n Nom : {nom} \n Prenom : {prenom} \n Numero : {numeroEtudiant}\n");
+        }
+
+        public static void ListeDeCours(string code, int numCours, string titre)
+        {
+
+            string path = "../../../database/" + "Liste_De_cours.txt";
+            File.AppendAllText(path, $"\n\n Code : {code} \n Titre : {titre} \n Numero : {numCours}\n");
+        }
+
+        public static void ListeDeNotes(string titre, int numEtudiant, string note)
+        {
+
+            string path = "../../../database/ListeNotes/" +numEtudiant+".txt";
+            File.AppendAllText(path, $"\n\n Titre : {titre} \n Note : {note}");
         }
 
         //fini ici

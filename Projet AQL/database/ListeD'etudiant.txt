@@ -1,0 +1,30 @@
+﻿
+
+  Nom : bell 
+ Prenom : james 
+ Numero : 1
+
+
+  Nom : james 
+ Prenom : bell 
+ Numero : 1
+
+
+  Nom : 1 
+ Prenom : 1 
+ Numero : 1
+
+
+  Nom : 1 
+ Prenom : 1 
+ Numero : 1
+
+
+  Nom : s 
+ Prenom : s 
+ Numero : 0
+
+
+  Nom : bell 
+ Prenom : james 
+ Numero : 1234
