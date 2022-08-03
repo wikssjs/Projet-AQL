@@ -9,7 +9,8 @@ namespace Projet_AQL
     public class Application
     {
         static List<Etudiant> mesEtudiants = new();
-
+        static List<Cours> mesCours = new();
+        static List<note> mesNotes = new();
         public static void Start()
         {
             int choix;
@@ -28,6 +29,12 @@ namespace Projet_AQL
                     break;
                 case 3:
                     CreerCours();
+                    break;
+                case 4:
+                    AfficherCours();
+                    break;
+                case 6:
+                    Affichernotes();
                     break;
                     
             }
@@ -96,6 +103,16 @@ namespace Projet_AQL
             string path = "../../../database/Etudiant/" + titre+ ".txt";
             File.WriteAllText(path, code);
             File.WriteAllText(path, numeroCours.ToString());
+        }
+
+        public static void AfficherCours()
+        { foreach (Cours cours in mesCours)
+                Console.WriteLine(cours);
+            }
+        public static void Affichernotes()
+        {
+            foreach (note note in mesNotes)
+                Console.WriteLine(note);
         }
 
     }
