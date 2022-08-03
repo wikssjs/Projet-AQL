@@ -8,9 +8,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="database\Etudiant\" />
-    <Folder Include="database\Cours\" />
-  </ItemGroup>
-
 </Project>

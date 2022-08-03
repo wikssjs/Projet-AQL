@@ -23,6 +23,7 @@ namespace Projet_AQL
         public int NumCours { get => _numcours; set => _numcours = value; }
         public string Code { get => _code; set => _code = value; }
         public string Titre { get => _titre; set => _titre = value; }
+
         public override string ToString()
         {
             return $"code : {Code}\n titre : {Titre} \n numcours{NumCours}";
