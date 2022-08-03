@@ -90,8 +90,8 @@ namespace Projet_AQL
 
             Etudiant etudiant = new(numeroEtudiant, nom, prenom);
             mesEtudiants.Add(etudiant);
-            EnregistrerEtudiant(nom, prenom, numeroEtudiant);
-            ListeEtudiant(nom, prenom, numeroEtudiant);
+            Sauvegarde.EnregistrerEtudiant(nom, prenom, numeroEtudiant);
+           Sauvegarde.ListeEtudiant(nom, prenom, numeroEtudiant);
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
 
@@ -133,7 +133,7 @@ namespace Projet_AQL
                 titre = Console.ReadLine();
             }while (string.IsNullOrEmpty(titre));
 
-            EnregisterCours(titre, code, numeroCours);
+            Sauvegarde.EnregisterCours(titre, code, numeroCours);
 
         }
 
@@ -154,16 +154,16 @@ namespace Projet_AQL
             {
                 Console.Write("Entrez le numero de l'etudiant");
                 numeroEtudiant = int.Parse(Console.ReadLine());
-                if (!NumExist(numeroEtudiant.ToString()))
+                if (!Sauvegarde.NumExist(numeroEtudiant.ToString()))
                     Console.WriteLine("Le numero de l'etudiant est inccorect");
 
-            } while (!NumExist(numeroEtudiant.ToString()));
+            } while (!Sauvegarde.NumExist(numeroEtudiant.ToString()));
 
             do {
                 Console.WriteLine("Entrez le cours");
                 cours = Console.ReadLine();
-                if (!CoursExist(cours)) Console.WriteLine("Le cours n'existe pas");
-            }while (!CoursExist(cours));
+                if (!Sauvegarde.CoursExist(cours)) Console.WriteLine("Le cours n'existe pas");
+            }while (!Sauvegarde.CoursExist(cours));
 
             do
             {
@@ -176,7 +176,7 @@ namespace Projet_AQL
 
 
 
-            SauvegarderNotes(note, numeroEtudiant, cours);
+            Sauvegarde.SauvegarderNotes(note, numeroEtudiant, cours);
         }
 
 
@@ -185,47 +185,6 @@ namespace Projet_AQL
             foreach (note note in mesNotes)
                 Console.WriteLine(note);
         }
-
-        //NomClass : Sauvegarde
-        //Commence ici
-        public static void EnregistrerEtudiant(string nom,string prenom,int numEtudiant)
-        {
-            string path = "../../../database/Etudiant/" +numEtudiant + ".txt";
-            File.WriteAllText(path,"Nom :"+nom+"\n"+ "Prenom : "+prenom);        
-        }
-
-        public static void EnregisterCours(string titre,string code,int numeroCours)
-        {
-            string path = "../../../database/Cours/" + titre+ ".txt";
-            File.WriteAllText(path, "CodeCours : "+code+"\n"+"NumeroCours : "+numeroCours);
-        }
-
-        public static bool NumExist(string numeroEtudiant)
-        {
-            string path = "../../../database/Etudiant/" + numeroEtudiant + ".txt";
-            return File.Exists(path);
-        }
-
-        public static bool CoursExist(string cours)
-        {
-            string path = "../../../database/Cours/" + cours + ".txt";
-            return File.Exists(path);
-        }
-
-        public static void SauvegarderNotes(double note,int numEtudiant,string cours)
-        {
-            string path = "../../../database/Notes/" + numEtudiant + ".txt";
-            File.WriteAllText(path,note+"\n"+cours);
-        }
-
-        public static void ListeEtudiant(string nom ,string prenom,int numeroEtudiant)
-        {
-
-            string path = "../../../database/" + "Liste" + ".txt";
-            File.AppendAllText(path,$"\n\n  Nom : {nom} \n Prenom : {prenom} \n Numero : {numeroEtudiant}\n");
-        }
-
-        //fini ici
 
     }
 }
