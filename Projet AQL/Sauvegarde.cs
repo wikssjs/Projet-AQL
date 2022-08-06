@@ -26,10 +26,10 @@ namespace Projet_AQL
             return File.Exists(path);
         }
 
-        public static bool CoursExist(string cours)
+        public static bool CoursExist(string titre)
         {
-            string path = "../../../database/Cours/" + cours + ".txt";
-            return File.Exists(path);
+            string path = "../../../database/Cours/" + titre + ".txt";
+            return File.Exists (path);
         }
 
         public static void SauvegarderNotes(double note, int numEtudiant, string cours)
@@ -38,28 +38,26 @@ namespace Projet_AQL
             File.WriteAllText(path, cours + "\n" + note);
         }
 
-        public static void ListeEtudiant(string nom, string prenom, int numeroEtudiant)
+        public static void CreerListeEtudiant(string nom, string prenom, int numeroEtudiant)
         {
 
             string path = "../../../database/" + "ListeD'etudiant" + ".txt";
             File.AppendAllText(path, $"\n\n Nom : {nom} \n Prenom : {prenom} \n Numero : {numeroEtudiant}\n");
         }
 
-        public static void ListeDeCours(string code, int numCours, string titre)
+        public static void CreerListeCours(string code, int numCours, string titre)
         {
 
             string path = "../../../database/" + "Liste_De_cours.txt";
             File.AppendAllText(path, $"\n\n Code : {code} \n Titre : {titre} \n Numero : {numCours}\n");
         }
 
-        public static void ListeDeNotes(string titre, int numEtudiant, string note)
+        public static void CreerListeNotesEtudiant(string titre, int numEtudiant, string note)
         {
 
             string path = "../../../database/ListeNotes/" +numEtudiant+".txt";
             File.AppendAllText(path, $"\n\n Titre : {titre} \n Note : {note}");
         }
-
-        //fini ici
 
     }
 }

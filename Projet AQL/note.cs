@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 
 namespace Projet_AQL
 {
-    internal class note
+    internal class Note
     {
         private int _numCours;
-        private int _note;
+        private double _noteCours;
+        private Etudiant _etudiant;
 
-        public note(int numCours, int note)
+
+        public Note(int numCours, double note,Etudiant etudiant)
         {
             NumCours = numCours;
-            Note = note;
+            NoteCours = note;
+            Etudiant = etudiant;
         }
 
+
         public int NumCours { get => _numCours; set => _numCours = value; }
-        public int Note { get => _note; set => _note = value; }
+        public double NoteCours { get => _noteCours; set => _noteCours = value; }
+        internal Etudiant Etudiant { get => _etudiant; set => _etudiant = value; }
 
         public override string ToString()
         {
-            return $"numero de cours : {NumCours}\n Note : {Note}";
+            return $"numero de cours : {NumCours}\n Note : {NoteCours}";
         }
     }
 }

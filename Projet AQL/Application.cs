@@ -12,7 +12,11 @@ namespace Projet_AQL
 
         static List<Etudiant> mesEtudiants = new();
         static List<Cours> mesCours = new();
-        static List<note> mesNotes = new();
+        static List<Note> mesNotes = new();
+
+        /// <summary>
+        /// Lancer l'application
+        /// </summary>
         public static void Start()
         {
             Console.Clear();
@@ -102,7 +106,7 @@ namespace Projet_AQL
             Etudiant etudiant = new(numeroEtudiant, nom, prenom);
             mesEtudiants.Add(etudiant);
             Sauvegarde.EnregistrerEtudiant(nom, prenom, numeroEtudiant);
-           Sauvegarde.ListeEtudiant(nom, prenom, numeroEtudiant);
+           Sauvegarde.CreerListeEtudiant(nom, prenom, numeroEtudiant);
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
 
@@ -147,9 +151,10 @@ namespace Projet_AQL
             }while (String.IsNullOrEmpty(code));
 
 
-
+            Cours cours = new(numeroCours, code, titre);
+            mesCours.Add(cours);
             Sauvegarde.EnregisterCours(titre, code, numeroCours);
-            Sauvegarde.ListeDeCours(code,numeroCours,titre);
+            Sauvegarde.CreerListeCours(code,numeroCours,titre);
             Console.WriteLine("Apuyer sur 'Q' pour quitter");
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
@@ -176,33 +181,43 @@ namespace Projet_AQL
             Console.Clear();
 
             int numeroEtudiant = 0;
-            double note = 0.0;
-            string cours = String.Empty;
+            double noteCours = 0.0;
+            string titre= String.Empty;
 
             do
             {
-                Console.Write("Entrez le numero de l'etudiant : ");
-                numeroEtudiant = int.Parse(Console.ReadLine());
+                try
+                {
+                    Console.Write("Entrez le numero de l'etudiant : ");
+                    numeroEtudiant = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Erreur de Sasie");
                 if (!Sauvegarde.NumExist(numeroEtudiant))
+                {
                     Console.WriteLine("Le numero de l'etudiant est inccorect");
+                }
+                }
 
             } while (!Sauvegarde.NumExist(numeroEtudiant));
 
             do {
                 Console.WriteLine("Entrez le cours : ");
-                cours = Console.ReadLine();
-                if (!Sauvegarde.CoursExist(cours)) Console.WriteLine("Le cours n'existe pas");
-            }while (!Sauvegarde.CoursExist(cours));
+                titre = Console.ReadLine();
+                if (!Sauvegarde.CoursExist(titre)) Console.WriteLine("Le cours n'existe pas");
+            }while (!Sauvegarde.CoursExist(titre));
 
             do
             {
                 Console.WriteLine("Entrez la note : ");
-                double.TryParse(Console.ReadLine(), out note);
-            if (note > 100||note <0) Console.WriteLine("La note doit etre entre 0 et 100");
+                double.TryParse(Console.ReadLine(), out noteCours);
+            if (noteCours > 100||noteCours <0) Console.WriteLine("La note doit etre entre 0 et 100");
 
-            }while(note < 0||note >100);
+            }while(noteCours < 0||noteCours >100);
 
-            Sauvegarde.ListeDeNotes(cours,numeroEtudiant,note.ToString());
+            Sauvegarde.CreerListeNotesEtudiant(titre,numeroEtudiant,noteCours.ToString());
+
         }
 
 

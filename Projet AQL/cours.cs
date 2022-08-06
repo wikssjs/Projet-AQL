@@ -12,6 +12,7 @@ namespace Projet_AQL
         private int _numcours;
         private string _code;
         private string _titre;
+        private Etudiant _etudiant;
 
         public Cours(int numCours, string code, string titre)
         {
