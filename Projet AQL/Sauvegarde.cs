@@ -30,6 +30,7 @@ namespace Projet_AQL
         {
             string path = "../../../database/Cours/" + titre + ".txt";
             return File.Exists (path);
+
         }
 
         public static void SauvegarderNotes(double note, int numEtudiant, string cours)
