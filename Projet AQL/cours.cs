@@ -12,7 +12,6 @@ namespace Projet_AQL
         private int _numcours;
         private string _code;
         private string _titre;
-        private Etudiant _etudiant;
         /// <summary>
         /// le constuteur de la class cours
         /// </summary>
@@ -31,5 +30,8 @@ namespace Projet_AQL
         public int NumCours { get => _numcours; set => _numcours = value; }
         public string Code { get => _code; set => _code = value; }
         public string Titre { get => _titre; set => _titre = value; }
+
+
+       
     }
 }

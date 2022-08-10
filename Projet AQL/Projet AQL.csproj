@@ -39,7 +39,6 @@
     <Folder Include="database\Etudiant\" />
     <Folder Include="database\Cours\" />
     <Folder Include="database\ListeNotes\" />
-    <Folder Include="database\Notes\" />
   </ItemGroup>
 
 </Project>

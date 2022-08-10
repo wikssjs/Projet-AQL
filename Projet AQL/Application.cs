@@ -12,7 +12,7 @@ namespace Projet_AQL
 
         static List<Etudiant> mesEtudiants = new();
         static List<Cours> mesCours = new();
-        static List<Note> mesNotes = new();
+        static readonly List<Note> mesNotes = new();
 
         /// <summary>
         /// Lancer l'application
@@ -87,6 +87,7 @@ namespace Projet_AQL
                     continue;
                 }
             }while (numeroEtudiant<0||Sauvegarde.NumExist(numeroEtudiant));
+
             Console.Clear();
 
             do
@@ -94,7 +95,9 @@ namespace Projet_AQL
                 Console.Write("Entrez le nom de l'etudiant : ");
                 nom = Console.ReadLine();
                 } while (string.IsNullOrEmpty(nom));
+
             Console.Clear();
+
             do 
             {
                 Console.Write("Entrez le prenom de l'etudiant : ");
@@ -109,6 +112,7 @@ namespace Projet_AQL
             mesEtudiants.Add(etudiant);
             Sauvegarde.EnregistrerEtudiant(nom, prenom, numeroEtudiant);
            Sauvegarde.CreerListeEtudiant(nom, prenom, numeroEtudiant);
+
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
 
@@ -122,13 +126,16 @@ namespace Projet_AQL
             string path = "../../../database/" + "ListeD'etudiant" + ".txt";
             string[] lines = File.ReadAllLines(path);
             string message = "";
+
             foreach (string line in lines)
             {
                 message += line + "\n";
                 
             }
+
             Console.WriteLine(message+"\n");
             Console.WriteLine("Appuyer sur 'Q' pour quitter");
+
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
         /// <summary>
@@ -162,6 +169,7 @@ namespace Projet_AQL
             Sauvegarde.EnregisterCours(titre, code, numeroCours);
             Sauvegarde.CreerListeCours(code,numeroCours,titre);
             Console.WriteLine("Apuyer sur 'Q' pour quitter");
+
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
 
@@ -181,6 +189,7 @@ namespace Projet_AQL
 
             }
             Console.WriteLine(message + "\n");
+            Console.WriteLine("Appuyer sur 'Q' pour quitter");
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
         /// <summary>
@@ -196,23 +205,19 @@ namespace Projet_AQL
 
             do
             {
-                try
-                {
                     Console.Write("Entrez le numero de l'etudiant : ");
-                    numeroEtudiant = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("Erreur de Sasie");
-                if (!Sauvegarde.NumExist(numeroEtudiant))
-                {
-                    Console.WriteLine("Le numero de l'etudiant est inccorect");
-                }
-                }
+                    int.TryParse(Console.ReadLine(),out numeroEtudiant);
+                
+                    if (!Sauvegarde.NumExist(numeroEtudiant))
+                    {
+                        Console.WriteLine("Le numero de l'etudiant est inccorect");
+                    }
 
             } while (!Sauvegarde.NumExist(numeroEtudiant));
 
-            do {
+
+            do
+            {
                 Console.WriteLine("Entrez le cours : ");
                 titre = Console.ReadLine();
                 if (!Sauvegarde.CoursExist(titre)) Console.WriteLine("Le cours n'existe pas");
@@ -227,6 +232,8 @@ namespace Projet_AQL
             }while(noteCours < 0||noteCours >100);
 
             Sauvegarde.CreerListeNotesEtudiant(titre,numeroEtudiant,noteCours.ToString());
+
+            Start();
 
         }
 
