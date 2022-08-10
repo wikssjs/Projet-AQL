@@ -34,7 +34,7 @@ namespace Projet_AQL
                         boucle = false; 
                         break;
                     case 1:
-                        creerEtudiant();
+                        CreerEtudiant();
                         boucle = false;
                         break;
                     case 2:
@@ -57,7 +57,7 @@ namespace Projet_AQL
                         boucle = false;
                         break;
                     case 6:
-                        Affichernotes();
+                        AfficherNotes();
                         boucle = false;
                         break;
                     default:
@@ -67,8 +67,10 @@ namespace Projet_AQL
             }while(boucle);
 
         }
-
-        public static void creerEtudiant()
+        /// <summary>
+        /// cette methode sert a creer un etudiant 
+        /// </summary>
+        public static void CreerEtudiant()
         {
             Console.Clear();
             int numeroEtudiant=0;
@@ -111,7 +113,9 @@ namespace Projet_AQL
         }
 
 
-
+        /// <summary>
+        /// cette methode sert a afficher un etudiant 
+        /// </summary>
         public static void AfficherEtudiant()
         {
             Console.Clear();
@@ -127,7 +131,9 @@ namespace Projet_AQL
             Console.WriteLine("Appuyer sur 'Q' pour quitter");
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
-
+        /// <summary>
+        /// cette methode sert a creer un cours
+        /// </summary>
         public static void CreerCours()
         {
             Console.Clear();
@@ -160,7 +166,9 @@ namespace Projet_AQL
         }
 
 
-
+        /// <summary>
+        /// cette methode sert a afficher un cours
+        /// </summary>
         public static void AfficherCours()
         {
             Console.Clear();
@@ -175,7 +183,9 @@ namespace Projet_AQL
             Console.WriteLine(message + "\n");
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
-
+        /// <summary>
+        /// cette methode sert a saisir une note d'un etudiant
+        /// </summary>
         public static void SaisirNotes()
         {
             Console.Clear();
@@ -220,8 +230,10 @@ namespace Projet_AQL
 
         }
 
-
-        public static void Affichernotes()
+        /// <summary>
+        /// cette methode sert a afficher les notes d'un etudiant
+        /// </summary>
+        public static void AfficherNotes()
         {
                 int numeroEtudiant = 0;
             do
@@ -242,6 +254,6 @@ namespace Projet_AQL
             Console.WriteLine(message + "\n");
             if (Console.ReadKey().Key == ConsoleKey.Q) Start();
         }
-
+         
     }
 }
